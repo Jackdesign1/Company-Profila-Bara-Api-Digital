@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bara API - Digital Infrastructure Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        header {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8a50 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff6b35;
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary:hover {
+            background: #ff5520;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .hero {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #fff9f7 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ff6b35;
+            padding: 0.7rem 1.5rem;
+            border: 2px solid #ff6b35;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-secondary:hover {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border-radius: 12px;
+            background: #f9f9f9;
+            transition: all 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8a50 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .about {
+            padding: 5rem 2rem;
+            background: #f9f9f9;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8a50 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .stats {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8a50 100%);
+            color: white;
+        }
+
+        .stats-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .services {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-item {
+            padding: 2rem;
+            background: white;
+            border: 2px solid #f0f0f0;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .service-item:hover {
+            border-color: #ff6b35;
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.15);
+        }
+
+        .service-item h4 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .service-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">🔥 Bara API</div>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+            <button class="btn-primary">Get Started</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Modern Digital Infrastructure for Your Business</h1>
+            <p>Bara API menyediakan solusi cloud computing, CDN global, dan security services dengan teknologi terdepan untuk bisnis Anda.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">Mulai Sekarang</button>
+                <button class="btn-secondary">Lihat Demo</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">Fitur Unggulan</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightning Fast</h3>
+                <p>CDN global dengan response time ultra cepat untuk pengguna di seluruh dunia dengan server di 200+ lokasi.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Enterprise Security</h3>
+                <p>Perlindungan DDoS, WAF, dan enkripsi end-to-end untuk memastikan data bisnis Anda selalu aman.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Real-time Analytics</h3>
+                <p>Dashboard komprehensif dengan insights mendalam tentang traffic, performance, dan security threats.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Easy Integration</h3>
+                <p>API yang powerful dan dokumentasi lengkap untuk integrasi seamless dengan aplikasi Anda.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Cost Effective</h3>
+                <p>Pricing transparan tanpa hidden fees. Bayar hanya untuk resource yang Anda gunakan.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Global Scale</h3>
+                <p>Infrastructure distributed di seluruh dunia untuk kinerja optimal dari mana saja.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Tentang Bara API</h2>
+                <p>Bara API didirikan pada 2018 dengan visi untuk menjadi penyedia infrastruktur digital terdepan di Asia Tenggara. Kami percaya bahwa teknologi cloud harus dapat diakses oleh semua bisnis, dari startup hingga enterprise.</p>
+                <p>Dengan tim engineer berpengalaman dan komitmen terhadap inovasi, kami terus mengembangkan solusi yang membantu ribuan bisnis tumbuh dan berkembang.</p>
+                <p>Misi kami adalah memberdayakan bisnis dengan infrastruktur digital yang reliable, secure, dan scalable.</p>
+            </div>
+            <div class="about-image">🏢</div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-content">
+            <div class="stat-item">
+                <h3>10,000+</h3>
+                <p>Active Customers</p>
+            </div>
+            <div class="stat-item">
+                <h3>99.99%</h3>
+                <p>Uptime Guarantee</p>
+            </div>
+            <div class="stat-item">
+                <h3>200+</h3>
+                <p>Data Centers</p>
+            </div>
+            <div class="stat-item">
+                <h3>1B+</h3>
+                <p>Requests Daily</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-title">Layanan Kami</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <h4>🌐 CDN Global</h4>
+                <p>Percepat delivery content dengan jaringan CDN terluas yang melayani jutaan pengguna setiap hari.</p>
+            </div>
+            <div class="service-item">
+                <h4>🛡️ DDoS Protection</h4>
+                <p>Lindungi aplikasi dari serangan DDoS dengan intelligent filtering dan automatic mitigation.</p>
+            </div>
+            <div class="service-item">
+                <h4>🔐 Web Application Firewall</h4>
+                <p>Proteksi aplikasi web dari vulnerabilities dengan WAF yang intelligent dan adaptif.</p>
+            </div>
+            <div class="service-item">
+                <h4>📡 DNS Management</h4>
+                <p>DNS ultra-fast dengan failover otomatis dan health checks untuk reliability maksimal.</p>
+            </div>
+            <div class="service-item">
+                <h4>🎯 Load Balancing</h4>
+                <p>Distribusi traffic intelligent untuk memastikan uptime dan performance aplikasi Anda.</p>
+            </div>
+            <div class="service-item">
+                <h4>📈 Performance Analytics</h4>
+                <p>Monitor performa aplikasi secara real-time dengan insights mendalam dan actionable recommendations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 5rem 2rem; text-align: center; background: #f9f9f9;" id="contact">
+        <h2 class="section-title">Siap untuk Bergabung?</h2>
+        <p style="color: #666; margin-bottom: 2rem; font-size: 1.1rem;">Jutaan bisnis mempercayai Bara API untuk infrastruktur digital mereka.</p>
+        <button class="btn-primary" style="font-size: 1rem; padding: 1rem 2rem;">Mulai Trial Gratis</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Bara API. Semua hak dilindungi.</p>
+        <p>Hubungi kami: hello@baraapi.com | +62-21-XXXX-XXXX</p>
+    </footer>
+</body>
+</html>
