@@ -298,68 +298,6 @@
             line-height: 1.7;
         }
 
-        .footer {
-    background: #0f0f0f;
-    color: #b5b5b5;
-    padding: 4rem 2rem 2rem;
-    margin-top: 5rem;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.2fr;
-    gap: 3rem;
-}
-
-.footer-brand h3 {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, #ff6b35, #ff8a50);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.footer-brand p {
-    line-height: 1.7;
-    color: #999;
-}
-
-.footer-links h4,
-.footer-contact h4 {
-    color: #ffffff;
-    margin-bottom: 1rem;
-    font-size: 1.05rem;
-}
-
-.footer-links a {
-    display: block;
-    text-decoration: none;
-    color: #b5b5b5;
-    margin-bottom: 0.6rem;
-    font-size: 0.95rem;
-    transition: all 0.3s;
-}
-
-.footer-links a:hover {
-    color: #ff6b35;
-    transform: translateX(4px);
-}
-
-.footer-contact p {
-    margin-bottom: 0.6rem;
-    font-size: 0.95rem;
-}
-
-.footer-bottom {
-    border-top: 1px solid #222;
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #777;
-}
 
 @media (max-width: 768px) {
     .footer-container {
@@ -524,44 +462,62 @@
         <button class="btn-primary" style="font-size: 1rem; padding: 1rem 2rem;">Mulai Trial Gratis</button>
     </section>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <h3>🔥 Bara API</h3>
-                <p>
-                    Infrastruktur digital modern untuk bisnis yang membutuhkan
-                    performa tinggi, keamanan, dan skalabilitas global.
-                </p>
+    <footer class="bg-neutral-900 text-neutral-400 mt-20">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                
+                <!-- Brand -->
+                <div class="md:col-span-1">
+                    <h3 class="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent mb-4">
+                        🔥 Bara API
+                    </h3>
+                    <p class="text-sm leading-relaxed">
+                        Infrastruktur digital modern untuk bisnis yang membutuhkan
+                        performa tinggi, keamanan, dan skalabilitas global.
+                    </p>
+                </div>
+    
+                <!-- Produk -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Produk</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-orange-500 transition">CDN Global</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">DDoS Protection</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Web Application Firewall</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Load Balancer</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Perusahaan -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Perusahaan</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="hover:text-orange-500 transition">Tentang Kami</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Karir</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Kontak -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Kontak</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>📧 hello@baraapi.com</li>
+                        <li>📞 +62-21-XXXX-XXXX</li>
+                        <li>📍 Jakarta, Indonesia</li>
+                    </ul>
+                </div>
+    
             </div>
     
-            <div class="footer-links">
-                <h4>Produk</h4>
-                <a href="#">CDN Global</a>
-                <a href="#">DDoS Protection</a>
-                <a href="#">WAF</a>
-                <a href="#">Load Balancer</a>
+            <!-- Bottom -->
+            <div class="border-t border-neutral-800 mt-12 pt-6 text-center text-sm text-neutral-500">
+                © 2024 Bara API. All rights reserved.
             </div>
-    
-            <div class="footer-links">
-                <h4>Perusahaan</h4>
-                <a href="#about">Tentang Kami</a>
-                <a href="#">Karir</a>
-                <a href="#">Blog</a>
-                <a href="#">Kebijakan Privasi</a>
-            </div>
-    
-            <div class="footer-contact">
-                <h4>Kontak</h4>
-                <p>📧 hello@baraapi.com</p>
-                <p>📞 +62-21-XXXX-XXXX</p>
-                <p>📍 Jakarta, Indonesia</p>
-            </div>
-        </div>
-    
-        <div class="footer-bottom">
-            <p>© 2024 Bara API. All rights reserved.</p>
         </div>
     </footer>
+    
     
 </body>
 </html>
